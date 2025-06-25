@@ -1,118 +1,138 @@
-<!-- Digital Bakery • Futuristic Landing Page for Peruvian SMBs  -->
+<!-- Digital Bakery • Vertical Interactive Flyer for Stand Tablets -->
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Digital Bakery – Futuro Digital para Pymes</title>
+    <title>Digital Bakery – Empowering Peruvian SMBs</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
-
     <style>
-      /* ========== CSS VARIABLES (PALETA) ========== */
-      :root {
-        --navy-900: #0e0e2c;
-        --navy-700: #1b1b47;
-        --purple-500: #6633ff;
-        --purple-300: #8877ff;
-        --amber-400: #ffb74d;
-        --sky-300: #6ec9f1;
-        --white: #ffffff;
-        --glass-bg: rgba(255, 255, 255, 0.08);
-        --radius-lg: 1rem;
+      /* ====== COLOR PALETTE ====== */
+      :root{
+        --bg-dark:#0b0c23;
+        --bg-mid:#13153a;
+        --indigo:#5c6bff;
+        --cyan:#36d1dc;
+        --amber:#ffb74d;
+        --glass:rgba(255,255,255,.07);
+        --white:#fff;
+        --radius:1.2rem;
       }
-      /* ========== RESET LIGERO ========== */
+      /* ===== RESET ===== */
       *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-      body{font-family:"Poppins",sans-serif;color:var(--white);background:var(--navy-900);line-height:1.6;-webkit-font-smoothing:antialiased}
-      img{max-width:100%;display:block}
+      body{font-family:"Poppins",sans-serif;background:var(--bg-dark);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+      h1,h2,h3{font-family:"Bebas Neue",cursive;letter-spacing:1px}
       a{text-decoration:none;color:inherit}
-      ul{list-style:none}
-      /* ===== UTILS ===== */
-      .container{width:min(95%,1200px);margin-inline:auto}
-      .btn{padding:.9rem 2.2rem;border-radius:50px;font-weight:600;display:inline-block;transition:transform .25s}
+      img{max-width:100%;display:block}
+      /* ===== UTILITIES ===== */
+      .container{width:min(92%,600px);margin-inline:auto}
+      .glass{background:var(--glass);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius)}
+      .btn{display:inline-block;padding:.9rem 2.2rem;border-radius:50px;font-weight:600;transition:.3s}
       .btn:hover{transform:translateY(-3px)}
-      .btn-primary{background:linear-gradient(135deg,var(--purple-500),var(--sky-300));color:var(--white)}
+      .btn-primary{background:linear-gradient(135deg,var(--indigo),var(--cyan));color:var(--white)}
       /* ===== HERO ===== */
-      header{position:relative;min-height:100vh;display:grid;place-items:center;text-align:center;background:radial-gradient(ellipse at top,var(--navy-700),var(--navy-900));overflow:hidden}
+      header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;background:radial-gradient(circle at top,var(--bg-mid),var(--bg-dark));overflow:hidden}
       header::before,header::after{content:"";position:absolute;border-radius:50%;filter:blur(120px);opacity:.4;animation:float 10s infinite ease-in-out}
-      header::before{width:500px;height:500px;background:var(--purple-500);top:-10%;left:-10%}
-      header::after{width:400px;height:400px;background:var(--sky-300);bottom:-10%;right:-10%}
+      header::before{width:450px;height:450px;background:var(--indigo);top:-10%;left:-20%}
+      header::after{width:350px;height:350px;background:var(--cyan);bottom:-10%;right:-20%}
       @keyframes float{50%{transform:translateY(40px)}}
-      .hero h1{font-family:"Bebas Neue",cursive;font-size:clamp(3rem,8vw,6rem);letter-spacing:2px}
-      .hero p{font-size:1.2rem;margin-block:1.2rem 2.2rem;color:var(--purple-300)}
+      .hero h1{font-size:clamp(3rem,9vw,5.5rem)}
+      .hero p{font-size:1.2rem;margin:1.2rem 0;color:var(--cyan)}
       /* ===== FEATURES ===== */
-      section.features{padding:5rem 0;background:var(--navy-700)}
-      .feature-grid{display:grid;gap:2.5rem;margin-top:3rem}
-      @media(min-width:768px){.feature-grid{grid-template-columns:repeat(3,1fr)}}
-      .card{background:var(--glass-bg);backdrop-filter:blur(10px);padding:2rem;border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,.1);transition:transform .4s}
+      section.features{padding:4rem 0;background:var(--bg-mid)}
+      .feature-grid{display:grid;gap:2rem;margin-top:2.5rem}
+      .card{padding:2rem;text-align:center;transition:.4s}
       .card:hover{transform:translateY(-8px)}
-      .card i{font-size:2.5rem;color:var(--amber-400);margin-bottom:1rem}
-      .card h3{font-size:1.3rem;margin-bottom:.6rem}
-      /* ===== ROADMAP ===== */
-      section.roadmap{padding:5rem 0;position:relative}
-      .timeline{border-left:2px solid var(--purple-500);padding-left:2rem;position:relative}
-      .milestone{margin-bottom:3rem;opacity:0;transform:translateX(-40px);transition:all .5s}
-      .milestone.visible{opacity:1;transform:translateX(0)}
-      .milestone h4{color:var(--amber-400);font-weight:600;margin-bottom:.3rem}
-      .milestone span{font-size:.9rem;color:var(--purple-300)}
+      .card i{font-size:2.5rem;color:var(--amber);margin-bottom:.8rem}
+      .card h3{font-size:1.4rem;margin-bottom:.4rem}
+      /* ===== TIMELINE ===== */
+      section.timeline{padding:4rem 0;position:relative}
+      .line{position:absolute;left:50%;top:0;width:2px;height:100%;background:var(--indigo);transform:translateX(-50%)}
+      .event{position:relative;width:75%;margin-bottom:3rem;padding:1.5rem 2rem}
+      .event:nth-child(odd){left:0;border-left:4px solid var(--indigo)}
+      .event:nth-child(even){left:25%;border-right:4px solid var(--indigo)}
+      .event h4{color:var(--amber);font-size:1.2rem;margin-bottom:.2rem}
+      .event p{font-size:.95rem;color:var(--cyan)}
       /* ===== PRICING ===== */
-      section.pricing{padding:5rem 0;background:var(--navy-700)}
-      .pricing-grid{display:grid;gap:2rem;margin-top:3rem}
-      @media(min-width:900px){.pricing-grid{grid-template-columns:repeat(3,1fr)}}
-      .plan{background:var(--glass-bg);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-lg);backdrop-filter:blur(12px);padding:2.5rem;text-align:center;position:relative}
-      .plan.highlight{border:2px solid var(--amber-400);transform:scale(1.03)}
-      .plan h3{font-size:1.6rem;margin-bottom:.5rem;font-family:"Bebas Neue"}
-      .plan .price{font-size:2.5rem;font-weight:700;margin-bottom:.5rem;color:var(--amber-400)}
-      .plan ul{margin-top:1.5rem;text-align:left}
-      .plan li{margin-bottom:.6rem}
+      section.pricing{padding:4rem 0;background:var(--bg-mid)}
+      .pricing-grid{display:grid;gap:2rem;margin-top:2.5rem}
+      .plan{text-align:center;padding:2.2rem;position:relative}
+      .plan.highlight{border:2px solid var(--amber);transform:scale(1.04)}
+      .plan h3{font-size:1.6rem;margin-bottom:.4rem}
+      .plan .price{font-size:2.4rem;font-weight:700;margin-bottom:.4rem;color:var(--amber)}
+      .plan ul{text-align:left;margin-top:1rem}
+      .plan li{margin-bottom:.5rem}
       /* ===== CTA ===== */
-      section.cta{padding:4rem 0;text-align:center;position:relative}
+      section.cta{padding:3rem 0;text-align:center}
       .pulse{animation:pulse 3s infinite}
-      @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-      /* ===== FOOTER ===== */
-      footer{padding:1.5rem 0;text-align:center;font-size:.9rem;color:var(--purple-300)}
+      @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+      footer{padding:1rem 0;text-align:center;font-size:.85rem;color:var(--cyan)}
     </style>
   </head>
   <body>
-    <!-- ========== HERO ========== -->
+    <!-- HERO -->
     <header>
       <div class="hero container">
         <h1>Digital Bakery</h1>
-        <p>Potenciamos a las pymes peruanas con e‑commerce, contenido y automatización en un solo plan.</p>
-        <a href="https://digitalbakery.vercel.app" class="btn btn-primary pulse" target="_blank">Ver Demo en Vivo</a>
+        <p>Todo lo que tu pyme necesita para vender online, en un solo plan futurista.</p>
+        <a href="https://digitalbakery.vercel.app" target="_blank" class="btn btn-primary pulse">Ver Demo</a>
       </div>
     </header>
-    <!-- ========== FEATURES ========== -->
+
+    <!-- FEATURES -->
     <section class="features">
       <div class="container">
-        <h2 class="section-title">¿Qué obtienes ahora mismo?</h2>
+        <h2 class="section-title">Beneficios instantáneos</h2>
         <div class="feature-grid">
-          <div class="card">
-            <i data-feather="shopping-bag"></i>
-            <h3>Tienda en 48 h</h3>
-            <p>E‑commerce listo, pagos COD/Yape, sin código ni gastos ocultos.</p>
-          </div>
-          <div class="card">
-            <i data-feather="video"></i>
-            <h3>Contenido Mensual</h3>
-            <p>12–20 piezas pro al mes para Instagram, TikTok y Facebook.</p>
-          </div>
-          <div class="card">
-            <i data-feather="zap"></i>
-            <h3>Infraestructura Serverless</h3>
-            <p>Vercel + Render: rápida, segura y con costos que crecen solo cuando tú creces.</p>
-          </div>
+          <div class="card glass"><i data-feather="shopping-cart"></i><h3>Tienda express</h3><p>Publica catálogo, pagos y logística en 48 h.</p></div>
+          <div class="card glass"><i data-feather="video"></i><h3>Contenido pro</h3><p>Hasta 20 reels mensuales, listos para tus redes.</p></div>
+          <div class="card glass"><i data-feather="zap"></i><h3>Escala serverless</h3><p>Costo infra &lt; S/ 120 cliente; pagas solo si vendes.</p></div>
         </div>
       </div>
     </section>
-    <!-- ========== ROADMAP ========== -->
-    <section class="roadmap" id="roadmap">
+
+    <!-- TIMELINE -->
+    <section class="timeline">
       <div class="container">
-        <h2 class="section-title">Ruta 2024‑2026</h2>
-        <div class="timeline">
-          <div class="milestone"><h4>Q3 2024</h4><span>Tap‑to‑Pay Yape/Plin en checkout.</span></div>
-          <div class="milestone"><h4>Q4 2024</
+        <h2 class="section-title">Hoja de ruta 2024‑2026</h2>
+        <div class="line"></div>
+        <div class="event glass"><h4>Q3 2024 • Pagos QR</h4><p>Integración Yape/Plin Tap‑to‑Pay en el checkout.</p></div>
+        <div class="event glass"><h4>Q4 2024 • Tarjetas</h4><p>Pasarela Visa/Mastercard con Culqi/Izipay.</p></div>
+        <div class="event glass"><h4>Q1 2025 • Chatbot IA</h4><p>Atiende y upsellea 24/7 en web + WhatsApp.</p></div>
+        <div class="event glass"><h4>Q3 2025 • Recomendador</h4><p>Algoritmo de productos "también te puede gustar".</p></div>
+        <div class="event glass"><h4>2026 • Dashboard BI</h4><p>Panel de métricas predictivas y control de merma.</p></div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing">
+      <div class="container">
+        <h2 class="section-title">Planes a tu medida</h2>
+        <div class="pricing-grid">
+          <div class="plan glass"><h3>Seed</h3><p class="price">S/ 249</p><ul><li>Tienda + hosting</li><li>Soporte básico</li><li>Actualizaciones núcleo</li></ul></div>
+          <div class="plan glass highlight"><h3>Grow</h3><p class="price">S/ 799</p><ul><li>Todo Seed</li><li>12 piezas contenido</li><li>2 h UX/Dev</li></ul></div>
+          <div class="plan glass"><h3>Bloom‑AI</h3><p class="price">S/ 2 499</p><ul><li>Todo Grow</li><li>Chatbot IA +推荐</li><li>20 piezas contenido</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container">
+        <h2>¿Listo para hornear tu tienda online?</h2>
+        <a href="https://digitalbakery.vercel.app" target="_blank" class="btn btn-primary pulse">Explora la Demo Ahora</a>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 Digital Bakery • Hecho en Perú
+    </footer>
+
+    <script>feather.replace()</script>
+  </body>
+</html>

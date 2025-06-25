@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Bakery • Flyer Web</title>
+  <style>
+    /* ====== RESET BÁSICO ====== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: #f7b168;
+      color: #6b3a23;
+      line-height: 1.4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ====== HERO ====== */
+    .hero {
+      width: 100%;
+      max-width: 1080px;
+      padding: 3rem 1rem 5rem;
+      background: linear-gradient(rgba(195, 123, 54, 0.35), rgba(195, 123, 54, 0.35)),
+        url("https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1080&q=60")
+          center/cover no-repeat;
+      text-align: center;
+      border-bottom: 4px solid #6b3a23;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3);
+    }
+    .slogan {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: #fffbe8;
+      margin-top: 0.75rem;
+    }
+
+    /* ====== CONTENIDO PRINCIPAL ====== */
+    main {
+      width: 100%;
+      max-width: 1080px;
+      padding: 2.5rem 1rem 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    /* Bloque titular */
+    .headline {
+      text-align: center;
+    }
+    .headline h2 {
+      font-size: 2.25rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    .headline .price {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    /* Galería inclinada */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border: 4px solid #fff;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+      transform: rotate(calc(var(--r, -4) * 1deg));
+    }
+    .gallery img:nth-child(2) {
+      --r: 3;
+    }
+    .gallery img:nth-child(3) {
+      --r: -5;
+    }
+
+    /* Sello CTA */
+    .burst {
+      position: relative;
+      width: 160px;
+      aspect-ratio: 1 / 1;
+      margin: 2rem auto 0;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .burst::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #6b3a23;
+      clip-path: polygon(
+        50% 0%, 61% 17%, 82% 18%, 68% 35%, 70% 57%, 50% 50%, 30% 57%, 32% 35%, 18% 18%, 39% 17%
+      );
+    }
+    .burst span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Planes */
+    .plans {
+      background: #fffbe8;
+      padding: 2rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+    .plans h3 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: "Courier New", monospace;
+    }
+    th,
+    td {
+      padding: 0.5rem 0.25rem;
+      border-bottom: 1px dashed #c37b36;
+    }
+    th {
+      text-align: left;
+    }
+    td:last-child,
+    th:last-child {
+      text-align: right;
+    }
+
+    /* Demo / contacto */
+    .cta {
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .cta a {
+      color: #6b3a23;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .info-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .box {
+      background: #ffe0b8;
+      border: 2px solid #6b3a23;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      min-width: 230px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .box strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      .headline h2 {
+        font-size: 1.6rem;
+      }
+      .gallery img {
+        height: 140px;
+      }
+      .plans h3 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Digital Bakery</h1>
+    <p class="slogan">Hornea tu tienda online y déjala crecer.</p>
+  </header>
+
+  <main>
+    <!-- Titular y precio -->
+    <section class="headline">
+      <h2>Tu tienda online en 48&nbsp;horas</h2>
+      <p class="price">Suscripción en soles desde <strong>S/ 249</strong></p>
+    </section>
+
+    <!-- Galería -->
+    <section>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1590086782792-e24c75063c9d?auto=format&fit=crop&w=800&q=60" alt="Producto 1" />
+        <img src="https://images.unsplash.com/photo-1571816209629-1cdb40cc4d30?auto=format&fit=crop&w=800&q=60" alt="Producto 2" />
+        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c6b?auto=format&fit=crop&w=800&q=60" alt="Producto 3" />
+      </div>
+      <div class="burst"><span>¡LANZA<br />YA!</span></div>
+    </section>
+
+    <!-- Planes -->
+    <section class="plans">
+      <h3>Planes mensuales</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Plan</th>
+            <th>Precio</th>
+            <th>Incluye</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Seed</td>
+            <td>S/ 249</td>
+            <td>Tienda + hosting</td>
+          </tr>
+          <tr>
+            <td>Grow</td>
+            <td>S/ 799</td>
+            <td>Seed + 12 piezas RR.SS.</td>
+          </tr>
+          <tr>
+            <td>Bloom‑AI</td>
+            <td>S/ 2 499</td>
+            <td>Grow + IA + 20 piezas</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- CTA demo + info contacto -->
+    <section class="cta">
+      <p>Visita nuestra demo:</p>
+      <p><a href="https://digitalbakery.vercel.app" target="_blank">https://digitalbakery.vercel.app</a></p>
+
+      <div class="info-boxes">
+        <div class="box">
+          <strong>Demo presencial</strong>
+          Jr. Huancavelica 978<br />Cercado de Lima
+        </div>
+        <div class="box">
+          <strong>QR Demo</strong>
+          (coloca aquí tu QR)
+        </div>
+        <div class="box">
+          <strong>Pedidos</strong>
+          929‑153‑267
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

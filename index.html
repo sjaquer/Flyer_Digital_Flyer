@@ -6,72 +6,268 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Digital Bakery – Empowering Peruvian SMBs</title>
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
     <style>
-      /* ====== COLOR PALETTE ====== */
-      :root{
-        --bg-dark:#0b0c23;
-        --bg-mid:#13153a;
-        --indigo:#5c6bff;
-        --cyan:#36d1dc;
-        --amber:#ffb74d;
-        --glass:rgba(255,255,255,.07);
-        --white:#fff;
-        --radius:1.2rem;
+      /* ======= COLOR PALETTE ======= */
+      :root {
+        --bg-dark: #0b0c23;
+        --bg-mid: #13153a;
+        --indigo: #5c6bff;
+        --cyan: #36d1dc;
+        --amber: #ffb74d;
+        --glass: rgba(255, 255, 255, 0.07);
+        --white: #fff;
+        --neon-green: #16ff7c;
+        --neon-pink: #ff2aad;
+        --neon-blue: #1ecbff;
+        --radius: 1.2rem;
       }
-      /* ===== RESET ===== */
-      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-      body{font-family:"Poppins",sans-serif;background:var(--bg-dark);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
-      h1,h2,h3{font-family:"Bebas Neue",cursive;letter-spacing:1px}
-      a{text-decoration:none;color:inherit}
-      img{max-width:100%;display:block}
-      /* ===== UTILITIES ===== */
-      .container{width:min(92%,600px);margin-inline:auto}
-      .glass{background:var(--glass);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius)}
-      .btn{display:inline-block;padding:.9rem 2.2rem;border-radius:50px;font-weight:600;transition:.3s}
-      .btn:hover{transform:translateY(-3px)}
-      .btn-primary{background:linear-gradient(135deg,var(--indigo),var(--cyan));color:var(--white)}
-      /* ===== HERO ===== */
-      header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;background:radial-gradient(circle at top,var(--bg-mid),var(--bg-dark));overflow:hidden}
-      header::before,header::after{content:"";position:absolute;border-radius:50%;filter:blur(120px);opacity:.4;animation:float 10s infinite ease-in-out}
-      header::before{width:450px;height:450px;background:var(--indigo);top:-10%;left:-20%}
-      header::after{width:350px;height:350px;background:var(--cyan);bottom:-10%;right:-20%}
-      @keyframes float{50%{transform:translateY(40px)}}
-      .hero h1{font-size:clamp(3rem,9vw,5.5rem)}
-      .hero p{font-size:1.2rem;margin:1.2rem 0;color:var(--cyan)}
-      /* ===== FEATURES ===== */
-      section.features{padding:4rem 0;background:var(--bg-mid)}
-      .feature-grid{display:grid;gap:2rem;margin-top:2.5rem}
-      .card{padding:2rem;text-align:center;transition:.4s}
-      .card:hover{transform:translateY(-8px)}
-      .card i{font-size:2.5rem;color:var(--amber);margin-bottom:.8rem}
-      .card h3{font-size:1.4rem;margin-bottom:.4rem}
-      /* ===== TIMELINE ===== */
-      section.timeline{padding:4rem 0;position:relative}
-      .line{position:absolute;left:50%;top:0;width:2px;height:100%;background:var(--indigo);transform:translateX(-50%)}
-      .event{position:relative;width:75%;margin-bottom:3rem;padding:1.5rem 2rem}
-      .event:nth-child(odd){left:0;border-left:4px solid var(--indigo)}
-      .event:nth-child(even){left:25%;border-right:4px solid var(--indigo)}
-      .event h4{color:var(--amber);font-size:1.2rem;margin-bottom:.2rem}
-      .event p{font-size:.95rem;color:var(--cyan)}
-      /* ===== PRICING ===== */
-      section.pricing{padding:4rem 0;background:var(--bg-mid)}
-      .pricing-grid{display:grid;gap:2rem;margin-top:2.5rem}
-      .plan{text-align:center;padding:2.2rem;position:relative}
-      .plan.highlight{border:2px solid var(--amber);transform:scale(1.04)}
-      .plan h3{font-size:1.6rem;margin-bottom:.4rem}
-      .plan .price{font-size:2.4rem;font-weight:700;margin-bottom:.4rem;color:var(--amber)}
-      .plan ul{text-align:left;margin-top:1rem}
-      .plan li{margin-bottom:.5rem}
-      /* ===== CTA ===== */
-      section.cta{padding:3rem 0;text-align:center}
-      .pulse{animation:pulse 3s infinite}
-      @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-      footer{padding:1rem 0;text-align:center;font-size:.85rem;color:var(--cyan)}
+      /* ======= RESET ======= */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--bg-dark);
+        color: var(--white);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Bebas Neue", cursive;
+        letter-spacing: 1px;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      /* ======= UTILITIES ======= */
+      .container {
+        width: min(92%, 600px);
+        margin-inline: auto;
+      }
+      .glass {
+        background: var(--glass);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--radius);
+      }
+      .btn {
+        display: inline-block;
+        padding: 0.9rem 2.2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+      .btn:hover {
+        transform: translateY(-3px);
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, var(--indigo), var(--cyan));
+        color: var(--white);
+      }
+      /* ======= HERO ======= */
+      header {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        background: radial-gradient(circle at top, var(--bg-mid), var(--bg-dark));
+        overflow: hidden;
+      }
+      header::before,
+      header::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.4;
+        animation: float 10s infinite ease-in-out;
+      }
+      header::before {
+        width: 450px;
+        height: 450px;
+        background: var(--indigo);
+        top: -10%;
+        left: -20%;
+      }
+      header::after {
+        width: 350px;
+        height: 350px;
+        background: var(--cyan);
+        bottom: -10%;
+        right: -20%;
+      }
+      @keyframes float {
+        50% {
+          transform: translateY(40px);
+        }
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 9vw, 5.5rem);
+      }
+      .hero p {
+        font-size: 1.2rem;
+        margin: 1.2rem 0;
+        color: var(--cyan);
+      }
+      /* ======= FEATURES ======= */
+      section.features {
+        padding: 4rem 0;
+        background: var(--bg-mid);
+      }
+      .feature-grid {
+        display: grid;
+        gap: 2rem;
+        margin-top: 2.5rem;
+      }
+      .card {
+        padding: 2rem;
+        text-align: center;
+        transition: 0.4s;
+      }
+      .card:hover {
+        transform: translateY(-8px);
+      }
+      .card i {
+        font-size: 2.5rem;
+        color: var(--amber);
+        margin-bottom: 0.8rem;
+      }
+      .card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.4rem;
+      }
+      /* ======= TIMELINE ======= */
+      section.timeline {
+        padding: 4rem 0;
+        position: relative;
+      }
+      .line {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background: var(--indigo);
+        transform: translateX(-50%);
+      }
+      .event {
+        position: relative;
+        width: 75%;
+        margin-bottom: 3rem;
+        padding: 1.5rem 2rem;
+      }
+      .event:nth-child(odd) {
+        left: 0;
+        border-left: 4px solid var(--indigo);
+      }
+      .event:nth-child(even) {
+        left: 25%;
+        border-right: 4px solid var(--indigo);
+      }
+      .event h4 {
+        color: var(--amber);
+        font-size: 1.2rem;
+        margin-bottom: 0.2rem;
+      }
+      .event p {
+        font-size: 0.95rem;
+        color: var(--cyan);
+      }
+      /* ======= PRICING ======= */
+      section.pricing {
+        padding: 4rem 0;
+        background: var(--bg-mid);
+      }
+      .pricing-grid {
+        display: grid;
+        gap: 2rem;
+        margin-top: 2.5rem;
+      }
+      .plan {
+        text-align: center;
+        padding: 2.2rem;
+        position: relative;
+        overflow: hidden;
+        animation: planFloat 6s ease-in-out infinite;
+      }
+      @keyframes planFloat {
+        0%, 100% {transform: translateY(0);}
+        50% {transform: translateY(-12px);}
+      }
+      /* Neon styles for each plan */
+      .seed {
+        border: 2px solid var(--neon-green);
+        box-shadow: 0 0 15px var(--neon-green);
+      }
+      .grow {
+        border: 2px solid var(--neon-blue);
+        box-shadow: 0 0 15px var(--neon-blue);
+      }
+      .bloom {
+        border: 2px solid var(--neon-pink);
+        box-shadow: 0 0 15px var(--neon-pink);
+      }
+      .plan h3 {
+        font-size: 1.6rem;
+        margin-bottom: 0.4rem;
+      }
+      .plan .price {
+        font-size: 2.4rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+      }
+      .plan.seed .price {color: var(--neon-green);} 
+      .plan.grow .price {color: var(--neon-blue);} 
+      .plan.bloom .price {color: var(--neon-pink);} 
+      .plan ul {
+        text-align: left;
+        margin-top: 1rem;
+      }
+      .plan li {
+        margin-bottom: 0.5rem;
+      }
+      /* ======= CTA ======= */
+      section.cta {
+        padding: 3rem 0;
+        text-align: center;
+      }
+      .pulse {
+        animation: pulse 3s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.06);
+        }
+      }
+      footer {
+        padding: 1rem 0;
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--cyan);
+      }
     </style>
   </head>
   <body>
@@ -99,13 +295,13 @@
     <!-- TIMELINE -->
     <section class="timeline">
       <div class="container">
-        <h2 class="section-title">Hoja de ruta 2024‑2026</h2>
+        <h2 class="section-title">Hoja de ruta 2025‑2027</h2>
         <div class="line"></div>
-        <div class="event glass"><h4>Q3 2024 • Pagos QR</h4><p>Integración Yape/Plin Tap‑to‑Pay en el checkout.</p></div>
-        <div class="event glass"><h4>Q4 2024 • Tarjetas</h4><p>Pasarela Visa/Mastercard con Culqi/Izipay.</p></div>
-        <div class="event glass"><h4>Q1 2025 • Chatbot IA</h4><p>Atiende y upsellea 24/7 en web + WhatsApp.</p></div>
-        <div class="event glass"><h4>Q3 2025 • Recomendador</h4><p>Algoritmo de productos "también te puede gustar".</p></div>
-        <div class="event glass"><h4>2026 • Dashboard BI</h4><p>Panel de métricas predictivas y control de merma.</p></div>
+        <div class="event glass"><h4>Q1 2025 • Pagos QR</h4><p>Integración Yape/Plin Tap‑to‑Pay en el checkout.</p></div>
+        <div class="event glass"><h4>Q3 2025 • Tarjetas</h4><p>Pasarela Visa/Mastercard con Culqi/Izipay.</p></div>
+        <div class="event glass"><h4>Q1 2026 • Chatbot IA</h4><p>Atiende y upsellea 24/7 en web + WhatsApp.</p></div>
+        <div class="event glass"><h4>Q3 2026 • Recomendador</h4><p>Algoritmo de productos "también te puede gustar".</p></div>
+        <div class="event glass"><h4>2027 • Dashboard BI</h4><p>Panel de métricas predictivas y control de merma.</p></div>
       </div>
     </section>
 
